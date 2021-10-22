@@ -87,7 +87,7 @@ async def encc(e):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                await e.edit(str(er) + "\n\n**ERROR**")
                 COUNT.remove(e.chat_id)
                 os.remove(dl)
                 return os.remove(out)
@@ -213,14 +213,14 @@ async def encod(event):
             pass
         xxx = await event.reply("`Downloading...`")
         """ For Force Subscribe Channel"""
-        # pp = []
-        # async for x in event.client.iter_participants("put group username"):
-        #    pp.append(x.id)
-        # if (user.id) not in pp:
-        #    return await xxx.edit(
-        #        "U Must Subscribe This Channel To Use This Bot",
-        #       buttons=[Button.url("JOIN CHANNEL", url="put group link")],
-        #   )
+        pp = []
+        async for x in event.client.iter_participants("@HEXBOTS"):
+           pp.append(x.id)
+        if (user.id) not in pp:
+            return await xxx.edit(
+                "U Must Subscribe This Channel To Use This Bot",
+               buttons=[Button.url("JOIN CHANNEL", url="T.ME/HEXBOTS")],
+           )
         if len(COUNT) > 4 and user.id != OWNER:
             llink = (await event.client(cl(LOG))).link
             return await xxx.edit(
